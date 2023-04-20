@@ -1,0 +1,35 @@
+1、掌握File类的常用API
+    练习时注意：测试文件夹，因为删除不走回收站。
+
+2、掌握使用字节流拷贝文件
+    FileInputStream
+    FileOutputStream
+        使用byte[]
+    实现AutoCloseable接口的对象能够成为 try-with-resources 语句的目标,自动释放资源
+    // 将创建流对象的动作放入try的小括号中
+    try (FileInputStream fis = new FileInputStream("D:\\阳光海牛\\授课教案\\17 IO流\\mn.jpg");
+        FileOutputStream fos = new FileOutputStream("day07-io\\mn.jpg");
+    ) {
+        // 读写操作仍然在try的大括号中
+        // 一次读取一个字节数组 （缓冲区）
+        byte[] buffer = new byte[8192];
+        int len;
+        while ((len = fis.read(buffer)) != -1) {
+            fos.write(buffer, 0, len);
+        }
+    } catch (IOException e) {
+        // catch 异常处理
+        e.printStackTrace();
+    }
+
+3、知道为什么使用字符流
+    查看文本不乱码
+    掌握缓冲字符流读取一行数据的方法
+    掌握缓冲字符流写出字符串和换行符的方法
+
+4、对象操作流
+    如果一个类的对象能够被序列化操作，必须实现Serializable接口，提供一个固定的序列化版本号。
+    练习将多个对象序列化到文件 并反序列化重构对象。
+
+5、使用Properties集合读取和写入属性信息
+
